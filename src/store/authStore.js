@@ -6,6 +6,7 @@ export const useAuthStore = create(
     (set) => ({
       accessToken: null,
       user: null,
+      isHydrated: false, // add this
 
       setAuth: (data) =>
         set({
@@ -20,7 +21,11 @@ export const useAuthStore = create(
         }),
     }),
     {
-      name: "auth-storage", // stored in localStorage (acceptable fallback)
+      name: "auth-storage",
+
+      onRehydrateStorage: () => (state) => {
+        state.isHydrated = true; // mark hydrated
+      },
     }
   )
 );

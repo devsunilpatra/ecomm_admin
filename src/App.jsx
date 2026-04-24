@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { Layout } from "./components/layout/Layout";
 import AdminRoute from "./routes/AdminRoute";
-import PublicRoute from "./routes/PublicRoute";
+
 // Lazy load pages (performance boost)
 const AddItem = lazy(() => import("./pages/AddItem"));
 const ListItems = lazy(() => import("./pages/ListItems"));
@@ -14,10 +14,7 @@ function App() {
   return (
     <Suspense fallback={<div className="p-4">Loading...</div>}>
       <Routes>
-        {/* Public */}
-        <Route element={<PublicRoute />}>
-          <Route path="/login" element={<Login />} />
-        </Route>
+        <Route path="/login" element={<Login />} />
 
         {/* Protected Routes */}
         <Route element={<AdminRoute />}>
@@ -29,10 +26,8 @@ function App() {
         </Route>
 
         {/*  Catch-all (ALWAYS login) */}
-  <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-
-
     </Suspense>
   );
 }

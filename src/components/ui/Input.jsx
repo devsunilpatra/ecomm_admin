@@ -20,7 +20,7 @@ const Input = forwardRef(
 
         {/* Input */}
         <div
-          className={`flex items-center border px-3 py-2
+          className={`flex items-center border rounded-sm px-3 py-2
           ${error ? "border-red-500" : "border-gray-300"}`}
         >
           <input

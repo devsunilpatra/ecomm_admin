@@ -42,7 +42,7 @@ const Login = () => {
       <Form
         methods={methods}
         onSubmit={onSubmit}
-        className="p-6 shadow-lg rounded-xl w-96 flex flex-col gap-4"
+        className="p-6 shadow-sm rounded-lg w-96 flex flex-col gap-4"
       >
         <h2 className="text-xl font-semibold text-center">
           Admin Login
@@ -50,16 +50,16 @@ const Login = () => {
 
         <FormInput
           name="email"
-          label="Email"
+          label="Email Address"
           type="email"
-          placeholder="Enter email"
+          placeholder="Your@gmail.com"
         />
 
         <FormInput
           name="password"
           label="Password"
           type="password"
-          placeholder="Enter password"
+          placeholder="Enter your password"
         />
 
         {/* API Error */}
@@ -72,7 +72,7 @@ const Login = () => {
         <button
           type="submit"
           disabled={!isValid || isPending}
-          className="bg-black text-white px-4 py-2 w-full disabled:opacity-50 mt-3"
+          className="bg-black text-white px-4 py-2 w-full rounded-sm disabled:opacity-50 mt-3"
         >
           {isPending ? "Logging in..." : "Login"}
         </button>

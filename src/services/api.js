@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";
+import config from "../config/config";
 
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: config.base_url,
   withCredentials: true,
 });
 
