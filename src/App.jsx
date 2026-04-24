@@ -1,5 +1,40 @@
-const App = () => {
-  return <div>App</div>;
-};
+import { Routes, Route } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { Layout } from "./components/layout/Layout";
+import AdminRoute from "./routes/AdminRoute";
+import PublicRoute from "./routes/PublicRoute";
+// Lazy load pages (performance boost)
+const AddItem = lazy(() => import("./pages/AddItem"));
+const ListItems = lazy(() => import("./pages/ListItems"));
+const Orders = lazy(() => import("./pages/Orders"));
+const Login = lazy(() => import("./pages/Login"));
+
+function App() {
+  return (
+    <Suspense fallback={<div className="p-4">Loading...</div>}>
+      <Routes>
+        {/* Public */}
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<Login />} />
+        </Route>
+
+        {/* Protected Routes */}
+        <Route element={<AdminRoute />}>
+          <Route element={<Layout />}>
+            <Route path="/add" element={<AddItem />} />
+            <Route path="/list" element={<ListItems />} />
+            <Route path="/orders" element={<Orders />} />
+          </Route>
+        </Route>
+
+        {/*  Catch-all (ALWAYS login) */}
+  <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+
+
+    </Suspense>
+  );
+}
 
 export default App;
