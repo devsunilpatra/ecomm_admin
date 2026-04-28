@@ -1,15 +1,19 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { useLogin } from "../features/auth/authApi";
-
+// import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema } from "../features/auth/authSchema";
-
+import { loginSchema } from "../features/auth/schema/authSchema";
+// import { login } from "../features/auth/services/authApi";
+// import { useAuthStore } from "../features/auth/store/authStore";
 
 import Form from "../components/form/Form";
 import FormInput from "../components/form/FormInput";
 
 const Login = () => {
+
+  
+
   const { mutate, isPending, isError, error } = useLogin();
   const navigate = useNavigate();
   const location = useLocation();

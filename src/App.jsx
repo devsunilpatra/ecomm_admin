@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { Suspense, lazy } from "react";
+import { ToastContainer } from "react-toastify";
 import { Layout } from "./components/layout/Layout";
 import AdminRoute from "./routes/AdminRoute";
 
@@ -13,6 +14,7 @@ const Login = lazy(() => import("./pages/Login"));
 function App() {
   return (
     <Suspense fallback={<div className="p-4">Loading...</div>}>
+      <ToastContainer />
       <Routes>
         <Route path="/login" element={<Login />} />
 

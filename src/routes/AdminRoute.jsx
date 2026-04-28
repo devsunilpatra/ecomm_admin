@@ -1,9 +1,8 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { useAuthStore } from "../store/authStore";
+import { useAuthStore } from "../features/auth/store/authStore";
 
 const AdminRoute = () => {
   const { user, accessToken, isHydrated } = useAuthStore();
-  console.log(accessToken, "accessToken", user, "user" )
   const location = useLocation();
 
   // Wait for hydration

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useAuthStore } from "../store/authStore";
+import { useAuthStore } from "../features/auth/store/authStore";
 import config from "../config/config";
 
 const API = axios.create({
@@ -29,7 +29,7 @@ API.interceptors.response.use(
 
       try {
         const res = await axios.post(
-          "/api/auth/refresh",
+          "/api/users/refresh",
           {},
           { withCredentials: true }
         );

@@ -1,4 +1,4 @@
-import { useAuthStore } from "../../store/authStore";
+import { useAuthStore } from "../../features/auth/store/authStore";
 import { assets } from "../../assets/assets";
 
 export const Header = () => {
